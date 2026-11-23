@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Courier;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CourierRequest extends FormRequest
 {
@@ -12,7 +14,7 @@ class CourierRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

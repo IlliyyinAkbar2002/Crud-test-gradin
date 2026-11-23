@@ -6,17 +6,14 @@ use App\Http\Requests\CourierRequest;
 use App\Http\Requests\IndexCourierRequest;
 use App\Http\Resources\CourierResource;
 use App\Models\Courier;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Http\Response;
 
 class CourierController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(IndexCourierRequest $request)
     {
-        //
         $filters = $request->validated();
 
         $couriers = Courier::query()
@@ -33,9 +30,8 @@ class CourierController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CourierRequest $request)
     {
-        //
         return new CourierResource(Courier::create($request->validated()));
     }
 
@@ -51,9 +47,8 @@ class CourierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Courier $courier)
+    public function update(CourierRequest $request, Courier $courier)
     {
-        //
         $courier->update($request->validated());
 
         return new CourierResource($courier);
